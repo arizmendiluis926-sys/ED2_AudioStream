@@ -1,0 +1,112 @@
+:root {
+    --fondo: #100d19;
+    --morado: #772ce8;
+    --violeta: #a855f7;
+    --texto: #ffffff;
+}
+
+body {
+    background: linear-gradient(135deg, #100d19, #24103b);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #171020;
+}
+
+header h1 {
+    color: var(--violeta);
+}
+
+nav {
+    background: #211431;
+}
+
+.navbar-brand:hover {
+    color: var(--violeta);
+}
+
+.reproductor {
+    background: #21182e;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #772ce855;
+}
+
+.portada {
+    width: 180px;
+    height: 180px;
+    margin: 20px auto;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #772ce8, #c084fc);
+    display: grid;
+    place-items: center;
+}
+
+.portada span {
+    font-size: 80px;
+    color: white;
+}
+
+h2 {
+    color: var(--violeta);
+}
+
+.btn-primary {
+    background: var(--morado);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--violeta);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    margin: 5px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--violeta);
+    cursor: pointer;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.cancion {
+    background: #21182e;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancion:hover {
+    background: #492477;
+    transform: translateX(5px);
+}
+
+.cancion.activa {
+    border: 1px solid var(--violeta);
+}
+
+footer {
+    background: #171020;
+}
+
+@media (min-width: 768px) {
+    .lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
