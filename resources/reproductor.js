@@ -6,7 +6,7 @@ const canciones = [
     { nombre: "Galileo", archivo: "cancion4.mp3" },
     { nombre: "Terapia", archivo: "cancion5.mp3" },
     { nombre: "decisions", archivo: "cancion6.mp3" },
-    { nombre: "Night Changes", archivo: "cancion7.mp3" },
+    { nombre: "How Sweet", archivo: "cancion7.mp3" },
     { nombre: "DTMF", archivo: "cancion8.mp3" },
     { nombre: "Se fue la pantera", archivo: "cancion9.mp3" },
     { nombre: "DR. Doctor", archivo: "cancion10.mp3" }
