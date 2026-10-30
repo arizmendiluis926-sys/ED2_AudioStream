@@ -1,7 +1,7 @@
 // Lista de canciones
 const canciones = [
     { nombre: "309", archivo: "cancion1.mp3" },
-    { nombre: "Shape of You", archivo: "cancion2.mp3" },
+    { nombre: "1000 canciones", archivo: "cancion2.mp3" },
     { nombre: "Perfect", archivo: "cancion3.mp3" },
     { nombre: "Galileo", archivo: "cancion4.mp3" },
     { nombre: "Terapia", archivo: "cancion5.mp3" },
