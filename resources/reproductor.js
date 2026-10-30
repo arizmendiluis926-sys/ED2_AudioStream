@@ -1,20 +1,22 @@
 // Lista de canciones
 const canciones = [
-    { nombre: "309", archivo: "cancion1.mp3" },
-    { nombre: "1000 canciones", archivo: "cancion2.mp3" },
-    { nombre: "La niña fresa", archivo: "cancion3.mp3" },
-    { nombre: "Galileo", archivo: "cancion4.mp3" },
-    { nombre: "Terapia", archivo: "cancion5.mp3" },
-    { nombre: "decisions", archivo: "cancion6.mp3" },
-    { nombre: "How Sweet", archivo: "cancion7.mp3" },
-    { nombre: "DTMF", archivo: "cancion8.mp3" },
-    { nombre: "Se fue la pantera", archivo: "cancion9.mp3" },
-    { nombre: "DR. Doctor", archivo: "cancion10.mp3" }
+    { nombre: "309", artista: "NSQK", archivo: "cancion1.mp3", portada: "portada1.jpg" },
+    { nombre: "1000 canciones", artista: "Alvaro Diaz", archivo: "cancion2.mp3", portada: "portada2.jpg" },
+    { nombre: "La niña fresa", artista: "Banda Z", archivo: "cancion3.mp3", portada: "portada3.jpg" },
+    { nombre: "Galileo", artista: "cometa a la deriva", archivo: "cancion4.mp3", portada: "portada4.jpg" },
+    { nombre: "Terapia", artista: "lazaro suplika dopamina", archivo: "cancion5.mp3", portada: "portada5.jpg" },
+    { nombre: "decisions", artista: "ElTaller", archivo: "cancion6.mp3", portada: "portada6.jpg" },
+    { nombre: "How Sweet", artista: "NewJeans", archivo: "cancion7.mp3", portada: "portada7.jpg" },
+    { nombre: "DTMF", artista: "Bad Bunny", archivo: "cancion8.mp3", portada: "portada8.jpg" },
+    { nombre: "Se fue la pantera", artista: "Grupo Firme", archivo: "cancion9.mp3", portada: "portada9.jpg" },
+    { nombre: "DR. Doctor", artista: "Emi blue", archivo: "cancion10.mp3", portada: "portada10.jpg" }
 ];
 
-// Elementos HTML
+
 const audio = document.getElementById("audio");
 const titulo = document.getElementById("titulo");
+const artista = document.getElementById("artista");
+const imagenPortada = document.getElementById("imagenPortada");
 const reproducir = document.getElementById("reproducir");
 const anterior = document.getElementById("anterior");
 const siguiente = document.getElementById("siguiente");
@@ -24,19 +26,19 @@ const lista = document.getElementById("listaCanciones");
 
 let indice = 0;
 
-// Cargar canción
 function cargarCancion(numero) {
     indice = numero;
 
     audio.src = "resources/" + canciones[indice].archivo;
     titulo.textContent = canciones[indice].nombre;
+    artista.textContent = canciones[indice].artista;
+    imagenPortada.src = "resources/" + canciones[indice].portada;
 
     document.querySelectorAll(".cancion").forEach((elemento, i) => {
         elemento.classList.toggle("activa", i === indice);
     });
 }
 
-// Crear lista de canciones
 canciones.forEach((cancion, i) => {
     const elemento = document.createElement("article");
 
@@ -52,7 +54,6 @@ canciones.forEach((cancion, i) => {
     lista.appendChild(elemento);
 });
 
-// Reproducir y pausar
 reproducir.addEventListener("click", () => {
     if (audio.paused) {
         audio.play();
@@ -63,7 +64,6 @@ reproducir.addEventListener("click", () => {
     }
 });
 
-// Canción anterior
 anterior.addEventListener("click", () => {
     indice--;
 
@@ -76,7 +76,6 @@ anterior.addEventListener("click", () => {
     reproducir.textContent = "⏸";
 });
 
-// Siguiente canción
 siguiente.addEventListener("click", () => {
     indice++;
 
@@ -89,7 +88,6 @@ siguiente.addEventListener("click", () => {
     reproducir.textContent = "⏸";
 });
 
-// Actualizar barra de progreso
 audio.addEventListener("timeupdate", () => {
     if (audio.duration) {
         progreso.value = (audio.currentTime / audio.duration) * 100;
@@ -102,24 +100,20 @@ audio.addEventListener("timeupdate", () => {
         formatoTiempo(audio.duration);
 });
 
-// Mover barra de progreso
 progreso.addEventListener("input", () => {
     if (audio.duration) {
         audio.currentTime = (progreso.value / 100) * audio.duration;
     }
 });
 
-// Control de volumen
 volumen.addEventListener("input", () => {
     audio.volume = volumen.value;
 });
 
-// Reproducir siguiente al terminar
 audio.addEventListener("ended", () => {
     siguiente.click();
 });
 
-// Convertir segundos a minutos
 function formatoTiempo(segundos) {
     if (!Number.isFinite(segundos)) return "0:00";
 
@@ -129,5 +123,4 @@ function formatoTiempo(segundos) {
     return minutos + ":" + segundosRestantes.toString().padStart(2, "0");
 }
 
-// Cargar primera canción
 cargarCancion(0);
